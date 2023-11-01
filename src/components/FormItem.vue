@@ -2,33 +2,65 @@
 <div>
  
 <div class="relative overflow-x-auto">
-    
+  <form v-on:submit="didSubmitForm">
+
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-  <div class="grid grid-cols-12 gap-4 bg-[#D6DDEB] px-[20px] py-[20px] text-[15px]">
-    <div>Employee Name</div>
-    <div>Regular Rate of Pay (hourly)</div>
+  <div class="grid grid-cols-16 gap-2 bg-[#D6DDEB] px-[20px] py-[20px] text-[15px]">
+    <div class="col-span-2">Employee Name</div>
+    <div class="col-span-2">Regular Rate of Pay (hourly)</div>
     <div class="col-span-2">Hours of qualified sick leave</div>
-    <div># of days qualified sick</div>
-    <div class="col-span-3">Dates employee was out	Employee </div>
-    <div class="col-span-1">Employee Total Sick Pay</div>
-    <div class="col-span-1">Reimbursement per employee</div>
+    <div class="col-span-2"># of days qualified sick</div>
+    <div class="col-span-4">Dates employee was out	Employee </div>
+    <div class="col-span-2">Employee Total Sick Pay</div>
+    <div class="col-span-2">Reimbursement per employee</div>
   </div>
-  <div class="grid grid-cols-12 gap-4 ">
-    <div>John Doe</div>
-    <div>$20.00</div>
-    <div class="col-span-2">80</div>
-    <div>10</div>
-    <div class="col-span-3">Dates employee was out	Employee </div>
-    <div class="col-span-1">$1,600.00</div>
-    <div class="col-span-1">$1,600.00</div>
+  <div class="grid grid-cols-16 gap-2 mt-[10px]" v-for="(item, index) in items" :key="index">
+    <div class="col-span-2">
+      <span class="flex items-center border-[#D1D7E3] border-[1px] h-[44px] text-[#f5f7fb] w-[90px] pl-[10px] rounded-[10px] bg-white gap-[3px] focus:outline-none overflow-hidden">
+          $<input :name="`data[${index}]name`" v-model="item.name" required type="text" placeholder="Name" class="w-full h-full text-[#D1D7E3] focus:outline-none" >
+      </span>
+    </div>
+
+    <div class="col-span-2">
+      <span class="flex items-center border-[#D1D7E3] border-[1px] h-[44px] text-[#f5f7fb] w-[90px] pl-[10px] rounded-[10px] bg-white gap-[3px] focus:outline-none overflow-hidden">
+          $<input  :name="`data[${index}]payRate`" v-model="item.payRate"  required type="text" placeholder="Name" class="w-full h-full text-[#D1D7E3] focus:outline-none" >
+      </span>
+    </div>
+    <div class="col-span-2"> 
+      <span class="flex items-center border-[#D1D7E3] border-[1px] h-[44px] text-[#f5f7fb] w-[90px] pl-[10px] rounded-[10px] bg-white gap-[3px] focus:outline-none overflow-hidden">
+          $<input  :name="`data[${index}]sickHours`" v-model="item.sickHours"  required type="text" placeholder="Name" class="w-full h-full text-[#D1D7E3] focus:outline-none" >
+      </span>
+    </div>
+    <div class="col-span-2"> 
+      <span class="flex items-center border-[#D1D7E3] border-[1px] h-[44px] text-[#f5f7fb] w-[90px] pl-[10px] rounded-[10px] bg-white gap-[3px] focus:outline-none overflow-hidden">
+          $<input  required type="text" placeholder="Name" class="w-full h-full text-[#D1D7E3] focus:outline-none" >
+      </span>
+    </div>
+
+    <div class="col-span-4">
+      <ul class="flex items-center gap-[10px]">
+        <li class="text-[#3E435F] text-[15px]">from:</li>
+        <li> <VueDatePicker v-model="date"/></li>
+        <li class="text-[#3E435F] text-[15px]">to:</li>
+        <li> <VueDatePicker v-model="date2"/></li>
+
+      </ul>
+    </div>
+    <div class="col-span-2">
+      <span class="text-[#0047CC] font-medium	">$1,600.00</span>
+    </div>
+    <div class="col-span-2">
+            <span class="text-[#0047CC] font-medium	">$1,600.00</span>
+    </div>
   </div>
 </div>
-
+</form>
+<button v-on:click="items.push({  })" type="button">add additional employee</button>
 </div>
 
 
 
-<form v-on:submit="didSubmitForm">
+<!-- <form v-on:submit="didSubmitForm">
   <div v-for="(item, index) in items" :key="index">
     
     <label :for="`data[${index}]name`">name:</label>
@@ -54,7 +86,7 @@
   <br>
   
   <button type="submit">save</button>
-</form>
+</form> -->
 
 <pre>{{ items }}</pre>
 </div>
@@ -62,17 +94,22 @@
   
   <script>
   
+  import VueDatePicker from '@vuepic/vue-datepicker';
+  import '@vuepic/vue-datepicker/dist/main.css'
+
+
   export default {
     name: 'FormItem',
-    components: {},
+    components: { VueDatePicker },
     data() {
     return {
       items: [
         {
-          name: 'Test',
-          email: 'text@example.com',
-          enabled: true,
+          name: '',
+          payRate: '0',
+          sickHours: "0",
         },
+        
       ],
     };
   },
