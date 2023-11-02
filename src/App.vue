@@ -15,7 +15,7 @@
          <li class="text-[18px] flex justify-between bg-[#F5F7FB] mx-[11px] px-[8px]"><span class="text-[#3E435F] text-[15px]">Self Leave</span> <span class="text-[#0047CC] text-[15px]">${{ result.selfLeave  }}</span></li>
          <li class="text-[18px] flex justify-between mx-[11px] px-[8px] my-[11px]"><span class="text-[#3E435F] text-[15px]">Caring For<br/> Others</span><span class="text-[#0047CC] text-[15px]">${{ result.caringForOthers }}</span></li>
          <li class="text-[18px] flex justify-between bg-[#F5F7FB] mx-[11px] px-[8px]"><span class="text-[#3E435F] text-[15px]">Qualified Family<br/>Leave</span><span class="text-[#0047CC] text-[15px]">${{ result.qualifiedFamilyLeave }}</span></li>
-         <li class="bg-[#0047CC] text-[white] flex justify-between text-[16px] uppercase font-[600] pb-[9px] pt-[16px] px-[16px] mt-[15px]"><span>Total: </span><span>$2,739.00</span></li>
+         <li class="bg-[#0047CC] text-[white] flex justify-between text-[16px] uppercase font-[600] pb-[9px] pt-[16px] px-[16px] mt-[15px]"><span>Total: </span><span>${{  Number(result.selfLeave) + Number(result.caringForOthers)  + Number(result.qualifiedFamilyLeave) }}</span></li>
       </ul>
     </section>
   </div>
@@ -67,5 +67,6 @@ export default {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+
 </style>
 
