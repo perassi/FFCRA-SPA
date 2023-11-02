@@ -5,9 +5,9 @@
       <h2  class="text-[40px] underline text-[#3E435F] mb-[46px] font-[600] leading-[66px]">Qualified Sick Leave</h2>
       <FormItem name="selfLeave" title="Self Leave" subTitle="Reason for Qualified Sick Leave (may not exceed 10 workdays or 80 hours)" :list="selfLeaveList" @onDataChange="updateData"/>
       <div class="h-[2px] bg-[#dde4f7] w-full my-[50px]"></div>
-      <FormItem name="caringForOthers" title="Caring For Others" subTitle="Reason for Qualified Sick Leave, may not exceed 10 workdays or 80 hours" :list="selfLeaveList" @onDataChange="updateData"/>
+      <FormItem name="caringForOthers" title="Caring For Others" subTitle="Reason for Qualified Sick Leave, may not exceed 10 workdays or 80 hours" :list="caringForOthersList" @onDataChange="updateData"/>
       <div class="h-[2px] bg-[#dde4f7] w-full my-[50px]"></div>
-      <FormItem name="caringForOthers" title="Qualified Family Leave" subTitle="(up to 10 weeks expiring on December 31, 2020), first 10 days may be unpaid:" :list="selfLeaveList" @onDataChange="updateData"/>
+      <FormItem name="caringForOthers" title="Qualified Family Leave" subTitle="(up to 10 weeks expiring on December 31, 2020), first 10 days may be unpaid:" :list="qualifiedFamilyLeave" @onDataChange="updateData"/>
     </section>
     <section>
       <ul class="bg-[#FFFFFF] border-[#0047CC] border-[2px] rounded-[10px] min-w-[280px] pt-[10px] mt-[117px]">
@@ -32,6 +32,8 @@ export default {
   data: function () {
     return {
       selfLeaveList: ["Employee's own quarantine or isolation order under federal, state or local law", "Employee's self-quarantine as advised by a health care provider", 'Employee is experiencing symptoms and seeking a medical diagnosis'],
+      caringForOthersList: ["Employee is caring for another individual subject to quarantine or isolation order self-quarantine", "Employee is caring for son or daughter as a result of the child's school closing or other child care unavailable being unavailable"],
+      qualifiedFamilyLeave: ["Employee must be employed for at least 30 days", "Employee is caring for his/her son or daughter as a result of the child's school closing or other child care being unavailable due to COVID-19"],
       result: {
         selfLeave: 0,
         caringForOthers: 0,
