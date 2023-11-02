@@ -1,4 +1,4 @@
-# hello-world
+# Business GPS
 
 ## Project setup
 ```
