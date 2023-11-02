@@ -23,26 +23,30 @@
     <div class="col-span-2">Employee Total Sick Pay</div>
     <div class="col-span-2">Reimbursement per employee</div>
   </div>
-  <div class="grid grid-cols-16 gap-2 mt-[10px] border-[#0047CC] border-[1px] rounded-[10px] p-[7px] pl-[25px]" v-for="(item, index) in items" :key="index">
+  <div class="grid grid-cols-16 gap-2 mt-[10px] border-[#0047CC] border-[1px] rounded-[10px] p-[7px] pl-[25px] min-h-[59px]"   :class="{ 'bg-[white]': item.saved, 'border-[#D1D7E3]': item.saved }" v-for="(item, index) in items" :key="index">
     <div class="col-span-2">
-      <span class="flex items-center border-[#D1D7E3] border-[1px] h-[44px] text-[#D1D7E3] w-[90px] pl-[10px] rounded-[10px] bg-white gap-[3px] focus:outline-none overflow-hidden">
-          <input :name="`data[${index}]name`" v-model="item.name" required type="text" placeholder="Name" class="w-full h-full text-[#D1D7E3] focus:outline-none" >
+      <span v-if="!item.saved" class="flex items-center border-[#D1D7E3] border-[1px] h-[44px] text-[#D1D7E3] w-[90px] pl-[10px] rounded-[10px] bg-white gap-[3px] focus:outline-none overflow-hidden">
+          <input :name="`data[${index}]name`" v-model="item.name" required type="text" placeholder="Name" class="w-full h-full text-[#3E435F] focus:outline-none" >
       </span>
+      <span v-if="item.saved"  class="leading-[44px]">{{ item.name }}</span>
     </div>
     <div class="col-span-2">
-      <span class="flex items-center border-[#D1D7E3] border-[1px] h-[44px] text-[#D1D7E3] w-[90px] pl-[10px] rounded-[10px] bg-white gap-[3px] focus:outline-none overflow-hidden">
-          $<input  :name="`data[${index}]payRate`" v-model="item.payRate"  required type="number" class="w-full h-full text-[#D1D7E3] focus:outline-none" >
+      <span v-if="!item.saved" class="flex items-center border-[#D1D7E3] border-[1px] h-[44px] text-[#3E435F] w-[90px] pl-[10px] rounded-[10px] bg-white gap-[3px] focus:outline-none overflow-hidden">
+          $<input  :name="`data[${index}]payRate`" v-model="item.payRate"  required type="number" class="w-full h-full text-[#3E435F]  focus:outline-none" >
       </span>
+      <span v-if="item.saved" class="leading-[44px]">{{ item.payRate }}</span>
     </div>
     <div class="col-span-2"> 
-      <span class="flex items-center border-[#D1D7E3] border-[1px] h-[44px] text-[#e1e3ea] w-[90px] pl-[10px] rounded-[10px] bg-white gap-[3px] focus:outline-none overflow-hidden">
-          $<input  :name="`data[${index}]sickHours`" v-model="item.sickHours"  required type="number"  class="w-full h-full text-[#D1D7E3] focus:outline-none" >
+      <span v-if="!item.saved" class="flex items-center border-[#D1D7E3] border-[1px] h-[44px] text-[#3E435F] w-[90px] pl-[10px] rounded-[10px] bg-white gap-[3px] focus:outline-none overflow-hidden">
+          #<input  :name="`data[${index}]sickHours`" v-model="item.sickHours"  required type="number"  class="w-full h-full text-[#3E435F]  focus:outline-none" >
       </span>
+      <span v-if="item.saved" class="leading-[44px]">{{ item.sickHours }}</span>
     </div>
     <div class="col-span-2"> 
-      <span class="flex items-center border-[#D1D7E3] border-[1px] h-[44px] text-[#e1e3ea] w-[90px] pl-[10px] rounded-[10px] bg-white gap-[3px] focus:outline-none overflow-hidden">
-          $<input  :name="`data[${index}]sickDays`" v-model="item.sickDays" required  type="number" class="w-full h-full text-[#D1D7E3] focus:outline-none" >
+      <span v-if="!item.saved" class="flex items-center border-[#D1D7E3] border-[1px] h-[44px] text-[#3E435F] w-[90px] pl-[10px] rounded-[10px] bg-white gap-[3px] focus:outline-none overflow-hidden">
+          #<input  :name="`data[${index}]sickDays`" v-model="item.sickDays" required  type="number" class="w-full h-full text-[#3E435F]  focus:outline-none" >
       </span>
+      <span v-if="item.saved" class="leading-[44px]">{{ item.sickDays }}</span>
     </div>
 
     <div class="col-span-4 flex">
@@ -54,15 +58,16 @@
       </ul>
     </div>
     <div class="col-span-2 flex items-center">
-      <span class="text-[#0047CC] font-medium	">${{ calc(item) }}</span>
+        <span v-if="item.saved"  class="text-[#0047CC] font-medium	">${{ (item.payRate * item.sickHours).toFixed(0) }}</span>
     </div>
     <div class="col-span-2 flex items-center">
-            <span class="text-[#0047CC] font-medium	">${{ calc(item) }}</span>
+        <span v-if="item.saved" class="text-[#0047CC] font-medium	">${{ (item.payRate * item.sickHours) < 2000 ? (67/100 * (item.payRate * item.sickHours)).toFixed(0) : (item.payRate * item.sickHours).toFixed(0) }}</span>
     </div>
     <div class="col-span-1 flex items-center">
-      <ul class="flex gap-[10px]">
+      <ul class="flex gap-[10px] items-center">
         <li class="cursor-pointer">
-          <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+           <svg v-if="item.saved" width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg" v-on:click="save(index,false)">
             <g clip-path="url(#clip0_1_430)">
             <path d="M14.7705 9C14.3558 9 14.0205 9.336 14.0205 9.75V15.75C14.0205 16.1632 13.6845 16.5 13.2705 16.5H2.77051C2.35651 16.5 2.02051 16.1632 2.02051 15.75V5.25C2.02051 4.83675 2.35651 4.5 2.77051 4.5H8.77051C9.18526 4.5 9.52051 4.164 9.52051 3.75C9.52051 3.336 9.18526 3 8.77051 3H2.77051C1.53001 3 0.520508 4.0095 0.520508 5.25V15.75C0.520508 16.9905 1.53001 18 2.77051 18H13.2705C14.511 18 15.5205 16.9905 15.5205 15.75V9.75C15.5205 9.33525 15.1853 9 14.7705 9Z" fill="#3E435F"/>
             <path d="M7.55249 8.31675C7.49999 8.36925 7.46474 8.436 7.44974 8.508L6.91948 11.16C6.89473 11.283 6.93373 11.4098 7.02223 11.499C7.09348 11.5703 7.18948 11.6085 7.28773 11.6085C7.31173 11.6085 7.33649 11.6063 7.36124 11.601L10.0125 11.0708C10.086 11.0558 10.1527 11.0205 10.2045 10.968L16.1385 5.034L13.4872 2.38275L7.55249 8.31675Z" fill="#3E435F"/>
@@ -74,6 +79,11 @@
             </clipPath>
             </defs>
           </svg>
+
+          <svg v-if="!item.saved" width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg" v-on:click="save(index,true)">
+            <path d="M14.4753 0H2.5127C1.4142 0 0.520508 0.893695 0.520508 1.99219V15.0078C0.520508 16.1063 1.4142 17 2.5127 17H15.5283C16.6268 17 17.5205 16.1063 17.5205 15.0078V3.04526L14.4753 0ZM5.7334 1.32812H9.68457V3.85156H11.0127V1.32812H12.3408V4.51562C12.3408 4.88179 12.0429 5.17969 11.6768 5.17969H6.39746C6.0313 5.17969 5.7334 4.88179 5.7334 4.51562V1.32812ZM13.6689 15.6719H4.40527V9.82812C4.40527 9.46196 4.70317 9.16406 5.06934 9.16406H13.0049C13.371 9.16406 13.6689 9.46196 13.6689 9.82812V15.6719ZM16.1924 15.0078C16.1924 15.374 15.8945 15.6719 15.5283 15.6719H14.9971V9.82812C14.9971 8.72963 14.1034 7.83594 13.0049 7.83594H5.06934C3.97084 7.83594 3.07715 8.72963 3.07715 9.82812V15.6719H2.5127C2.14653 15.6719 1.84863 15.374 1.84863 15.0078V1.99219C1.84863 1.62602 2.14653 1.32812 2.5127 1.32812H4.40527V4.51562C4.40527 5.61412 5.29897 6.50781 6.39746 6.50781H11.6768C12.7753 6.50781 13.6689 5.61412 13.6689 4.51562V1.32812H13.9251L16.1924 3.59537V15.0078Z" fill="#3E435F"/>
+          </svg>
+
         </li>
         <li class="cursor-pointer" v-on:click="deleteItem(index)">
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -103,10 +113,6 @@
   <span class="font-[500]">Add additional employee</span>
 </button>
 </div>
-
-
-
-<!-- <pre>{{ items }}</pre> -->
 </div>
   </template>
   
@@ -136,6 +142,7 @@
             sickPay: 0,
             from: null,
             to: null,
+            saved: false
           },
         ],
       };
@@ -143,11 +150,11 @@
   watch: {
     items: {
     handler(list) {
-      const data = list.map((l) => {
-        return JSON.parse(JSON.stringify({...l, sickPay: this.calc(l) }))
+      const data = list.filter(i => i.saved).map((l) => {
+        return JSON.parse(JSON.stringify({...l, sickPay: (Number(l.payRate) * Number(l.sickHours))}))
       })
 
-      const value = data.reduce((a, b) => a + b.sickPay, 0)
+      const value = data.reduce((a, b) => a + b.sickPay, 0).toFixed(0)
 
       this.$emit('onDataChange', { name: this.name, value })
 
@@ -169,21 +176,26 @@
           sickDays: 0,
           from: null,
           to: null,
+          saved: false
         }
       )
     },
+    save(index, state) {
+      this.items = this.items.map((item,i) => {
+        if(i === index) {
+          item.saved = state;
+        } else {
+          item.saved = true;
+        }
+        return item
+      })
+    },
     deleteItem(index) {
-
-      console.log(index,'indddexx')
-      // this.items = this.items.splice(index, 1);
+      this.items = this.items.filter((item,i) => i !== index)
     },
     didSubmitForm(e) {
      e.preventDefault();
-     
-     const data = new FormData(e.target);
-     
-     console.log('Form data:', data);
-   } 
+             } 
   },
   }
   </script>
