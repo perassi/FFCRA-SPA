@@ -1,26 +1,15 @@
 <template>
 <div>
-  <p><span class="text-[#3E435F]">{{ title }}</span> <span class="text-[#0047CC]">{{ subTitle }}</span></p>
+  <p class="mb-[9px]"><span class="text-[#3E435F] text-[24px] text-[#3E435F] font-[600] mr-[12px]">{{ title }}</span> <span class="text-[#0047CC] text-[16px] italic">{{ subTitle }}</span></p>
 
-<ul class="text-[16px] text-[#3E435F] mb-[24px]">
+<ul class="text-[16px] text-[#3E435F] mb-[17px]">
   <li class="leading-[35px] flex items-center gap-[10px]" v-for="(item, index) in list" :key="index">
     <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M5.91416 8.1L4.51416 9.5L9.01416 14L19.0142 4L17.6142 2.6L9.01416 11.2L5.91416 8.1ZM18.0142 10C18.0142 14.4 14.4142 18 10.0142 18C5.61416 18 2.01416 14.4 2.01416 10C2.01416 5.6 5.61416 2 10.0142 2C10.8142 2 11.5142 2.1 12.2142 2.3L13.8142 0.7C12.6142 0.3 11.3142 0 10.0142 0C4.51416 0 0.0141602 4.5 0.0141602 10C0.0141602 15.5 4.51416 20 10.0142 20C15.5142 20 20.0142 15.5 20.0142 10H18.0142Z" fill="#3E435F"/>
     </svg>
-    <span>{{  item  }}</span>
+    <span class="">{{  item  }}</span>
   </li>
-  <!-- <li class="leading-[35px] flex items-center gap-[10px]">
-    <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M5.91416 8.1L4.51416 9.5L9.01416 14L19.0142 4L17.6142 2.6L9.01416 11.2L5.91416 8.1ZM18.0142 10C18.0142 14.4 14.4142 18 10.0142 18C5.61416 18 2.01416 14.4 2.01416 10C2.01416 5.6 5.61416 2 10.0142 2C10.8142 2 11.5142 2.1 12.2142 2.3L13.8142 0.7C12.6142 0.3 11.3142 0 10.0142 0C4.51416 0 0.0141602 4.5 0.0141602 10C0.0141602 15.5 4.51416 20 10.0142 20C15.5142 20 20.0142 15.5 20.0142 10H18.0142Z" fill="#3E435F"/>
-    </svg>
-    <span>Employee's self-quarantine as advised by a health care provider</span>
-  </li>
-  <li class="leading-[35px] flex items-center gap-[10px]">
-    <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M5.91416 8.1L4.51416 9.5L9.01416 14L19.0142 4L17.6142 2.6L9.01416 11.2L5.91416 8.1ZM18.0142 10C18.0142 14.4 14.4142 18 10.0142 18C5.61416 18 2.01416 14.4 2.01416 10C2.01416 5.6 5.61416 2 10.0142 2C10.8142 2 11.5142 2.1 12.2142 2.3L13.8142 0.7C12.6142 0.3 11.3142 0 10.0142 0C4.51416 0 0.0141602 4.5 0.0141602 10C0.0141602 15.5 4.51416 20 10.0142 20C15.5142 20 20.0142 15.5 20.0142 10H18.0142Z" fill="#3E435F"/>
-    </svg>
-    <span>Employee is experiencing symptoms and seeking a medical diagnosis</span>
-  </li> -->
+
 </ul>
 <div class="relativ">
   <form v-on:submit="didSubmitForm">
@@ -36,22 +25,22 @@
   </div>
   <div class="grid grid-cols-16 gap-2 mt-[10px] border-[#0047CC] border-[1px] rounded-[10px] p-[7px] pl-[25px]" v-for="(item, index) in items" :key="index">
     <div class="col-span-2">
-      <span class="flex items-center border-[#D1D7E3] border-[1px] h-[44px] text-[#f5f7fb] w-[90px] pl-[10px] rounded-[10px] bg-white gap-[3px] focus:outline-none overflow-hidden">
+      <span class="flex items-center border-[#D1D7E3] border-[1px] h-[44px] text-[#D1D7E3] w-[90px] pl-[10px] rounded-[10px] bg-white gap-[3px] focus:outline-none overflow-hidden">
           <input :name="`data[${index}]name`" v-model="item.name" required type="text" placeholder="Name" class="w-full h-full text-[#D1D7E3] focus:outline-none" >
       </span>
     </div>
     <div class="col-span-2">
-      <span class="flex items-center border-[#D1D7E3] border-[1px] h-[44px] text-[#f5f7fb] w-[90px] pl-[10px] rounded-[10px] bg-white gap-[3px] focus:outline-none overflow-hidden">
+      <span class="flex items-center border-[#D1D7E3] border-[1px] h-[44px] text-[#D1D7E3] w-[90px] pl-[10px] rounded-[10px] bg-white gap-[3px] focus:outline-none overflow-hidden">
           $<input  :name="`data[${index}]payRate`" v-model="item.payRate"  required type="number" class="w-full h-full text-[#D1D7E3] focus:outline-none" >
       </span>
     </div>
     <div class="col-span-2"> 
-      <span class="flex items-center border-[#D1D7E3] border-[1px] h-[44px] text-[#f5f7fb] w-[90px] pl-[10px] rounded-[10px] bg-white gap-[3px] focus:outline-none overflow-hidden">
+      <span class="flex items-center border-[#D1D7E3] border-[1px] h-[44px] text-[#e1e3ea] w-[90px] pl-[10px] rounded-[10px] bg-white gap-[3px] focus:outline-none overflow-hidden">
           $<input  :name="`data[${index}]sickHours`" v-model="item.sickHours"  required type="number"  class="w-full h-full text-[#D1D7E3] focus:outline-none" >
       </span>
     </div>
     <div class="col-span-2"> 
-      <span class="flex items-center border-[#D1D7E3] border-[1px] h-[44px] text-[#f5f7fb] w-[90px] pl-[10px] rounded-[10px] bg-white gap-[3px] focus:outline-none overflow-hidden">
+      <span class="flex items-center border-[#D1D7E3] border-[1px] h-[44px] text-[#e1e3ea] w-[90px] pl-[10px] rounded-[10px] bg-white gap-[3px] focus:outline-none overflow-hidden">
           $<input  :name="`data[${index}]sickDays`" v-model="item.sickDays" required  type="number" class="w-full h-full text-[#D1D7E3] focus:outline-none" >
       </span>
     </div>
@@ -111,7 +100,7 @@
     </clipPath>
     </defs>
   </svg>
-  <span>Add additional employee</span>
+  <span class="font-[500]">Add additional employee</span>
 </button>
 </div>
 

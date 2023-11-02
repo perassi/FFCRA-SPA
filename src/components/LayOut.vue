@@ -45,7 +45,7 @@
         </svg>
       </li>
       <li
-        class="border-t-[#4C7EDB] border-t-[1px] py-[18px] flex pl-[14px] gap-[10px]"
+        class="border-t-[#4C7EDB] border-t-[1px] py-[18px] flex pl-[14px] gap-[10px] font-[500]"
       >
         <svg
           width="19"
