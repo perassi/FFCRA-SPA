@@ -23,28 +23,28 @@
     <div class="col-span-2">Employee Total Sick Pay</div>
     <div class="col-span-2">Reimbursement per employee</div>
   </div>
-  <div class="grid grid-cols-16 gap-2 mt-[10px] border-[#0047CC] border-[1px] rounded-[10px] p-[7px] pl-[25px] min-h-[59px]"   :class="{ 'bg-[white]': item.saved, 'border-[#D1D7E3]': item.saved }" v-for="(item, index) in items" :key="index">
+  <div class="grid grid-cols-16 gap-2 mt-[10px] border-[#0047CC] border-[1px] rounded-[10px] p-[7px] pl-[20px] min-h-[59px]"   :class="{ 'bg-[white]': item.saved, 'border-[#D1D7E3]': item.saved }" v-for="(item, index) in items" :key="index">
     <div class="col-span-2">
-      <span v-if="!item.saved" class="flex items-center border-[#D1D7E3] border-[1px] h-[44px] text-[#D1D7E3] w-[90px] pl-[10px] rounded-[10px] bg-white gap-[3px] focus:outline-none overflow-hidden">
-          <input :name="`data[${index}]name`" v-model="item.name" required type="text" placeholder="Name" class="w-full h-full text-[#3E435F] focus:outline-none" >
+      <span v-if="!item.saved" class="flex items-center border-[#D1D7E3] w-full border-[1px] h-[44px] text-[#D1D7E3] w-[90px] pl-[10px] rounded-[10px] bg-white gap-[3px] focus:outline-none overflow-hidden">
+          <input :name="`data[${index}]name`" v-model="item.name"  required type="text" placeholder="Name" class="w-full h-full text-[#3E435F] focus:outline-none" >
       </span>
       <span v-if="item.saved"  class="leading-[44px]">{{ item.name }}</span>
     </div>
     <div class="col-span-2">
       <span v-if="!item.saved" class="flex items-center border-[#D1D7E3] border-[1px] h-[44px] text-[#3E435F] w-[90px] pl-[10px] rounded-[10px] bg-white gap-[3px] focus:outline-none overflow-hidden">
-          $<input  :name="`data[${index}]payRate`" v-model="item.payRate"  required type="number" class="w-full h-full text-[#3E435F]  focus:outline-none" >
+          $<input  :name="`data[${index}]payRate`" v-model="item.payRate" min=0 oninput="validity.valid||(value='');" required type="number" class="w-full h-full text-[#3E435F]  focus:outline-none" >
       </span>
       <span v-if="item.saved" class="leading-[44px]">{{ item.payRate }}</span>
     </div>
     <div class="col-span-2"> 
       <span v-if="!item.saved" class="flex items-center border-[#D1D7E3] border-[1px] h-[44px] text-[#3E435F] w-[90px] pl-[10px] rounded-[10px] bg-white gap-[3px] focus:outline-none overflow-hidden">
-          #<input  :name="`data[${index}]sickHours`" v-model="item.sickHours"  required type="number"  class="w-full h-full text-[#3E435F]  focus:outline-none" >
+          #<input  :name="`data[${index}]sickHours`" v-model="item.sickHours"  min=0 oninput="validity.valid||(value='');"  required type="number"  class="w-full h-full text-[#3E435F]  focus:outline-none" >
       </span>
       <span v-if="item.saved" class="leading-[44px]">{{ item.sickHours }}</span>
     </div>
     <div class="col-span-2"> 
       <span v-if="!item.saved" class="flex items-center border-[#D1D7E3] border-[1px] h-[44px] text-[#3E435F] w-[90px] pl-[10px] rounded-[10px] bg-white gap-[3px] focus:outline-none overflow-hidden">
-          #<input  :name="`data[${index}]sickDays`" v-model="item.sickDays" required  type="number" class="w-full h-full text-[#3E435F]  focus:outline-none" >
+          #<input  :name="`data[${index}]sickDays`" v-model="item.sickDays" required  min=0 oninput="validity.valid||(value='');"  type="number" class="w-full h-full text-[#3E435F]  focus:outline-none" >
       </span>
       <span v-if="item.saved" class="leading-[44px]">{{ item.sickDays }}</span>
     </div>
