@@ -7,7 +7,7 @@
       <div class="h-[2px] bg-[#dde4f7] w-full my-[50px]"></div>
       <FormItem name="caringForOthers" title="Caring For Others" subTitle="Reason for Qualified Sick Leave, may not exceed 10 workdays or 80 hours" :list="caringForOthersList" @onDataChange="updateData"/>
       <div class="h-[2px] bg-[#dde4f7] w-full my-[50px]"></div>
-      <FormItem name="caringForOthers" title="Qualified Family Leave" subTitle="(up to 10 weeks expiring on December 31, 2020), first 10 days may be unpaid:" :list="qualifiedFamilyLeave" @onDataChange="updateData"/>
+      <FormItem name="qualifiedFamilyLeave" title="Qualified Family Leave" subTitle="(up to 10 weeks expiring on December 31, 2020), first 10 days may be unpaid:" :list="qualifiedFamilyLeave" @onDataChange="updateData"/>
     </section>
     <section>
       <ul class="bg-[#FFFFFF] border-[#0047CC] border-[2px] rounded-[10px] min-w-[280px] pt-[10px] mt-[117px]">
