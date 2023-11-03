@@ -3,11 +3,11 @@
   <div class="flex gap-[33px]">
     <section>
       <h2  class="text-[40px] underline text-[#3E435F] mb-[46px] font-[600] leading-[66px]">Qualified Sick Leave</h2>
-      <FormItem name="selfLeave" title="Self Leave" subTitle="Reason for Qualified Sick Leave (may not exceed 10 workdays or 80 hours)" :list="selfLeaveList" @onDataChange="updateData"/>
+      <FormItem name="selfLeave" title="Self Leave" subTitle="Reason for Qualified Sick Leave (may not exceed 10 workdays or 80 hours)" :list="selfLeaveList" :twoThousandLogic="false" @onDataChange="updateData"/>
       <div class="h-[2px] bg-[#dde4f7] w-full my-[50px]"></div>
-      <FormItem name="caringForOthers" title="Caring For Others" subTitle="Reason for Qualified Sick Leave, may not exceed 10 workdays or 80 hours" :list="caringForOthersList" @onDataChange="updateData"/>
+      <FormItem name="caringForOthers" title="Caring For Others" subTitle="Reason for Qualified Sick Leave, may not exceed 10 workdays or 80 hours" :list="caringForOthersList" :twoThousandLogic="true"  @onDataChange="updateData"/>
       <div class="h-[2px] bg-[#dde4f7] w-full my-[50px]"></div>
-      <FormItem name="qualifiedFamilyLeave" title="Qualified Family Leave" subTitle="(up to 10 weeks expiring on December 31, 2020), first 10 days may be unpaid:" :list="qualifiedFamilyLeave" @onDataChange="updateData"/>
+      <FormItem name="qualifiedFamilyLeave" title="Qualified Family Leave" subTitle="(up to 10 weeks expiring on December 31, 2020), first 10 days may be unpaid:" :twoThousandLogic="true"  :list="qualifiedFamilyLeave" @onDataChange="updateData"/>
     </section>
     <section>
       <ul class="bg-[#FFFFFF] border-[#0047CC] border-[2px] rounded-[10px] min-w-[280px] pt-[10px] mt-[117px]">

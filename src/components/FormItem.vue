@@ -51,17 +51,15 @@
 
     <div class="col-span-4 flex">
       <ul class="flex items-center gap-[10px]">
-        <li class="text-[#3E435F] text-[15px]">From:</li>
-        <li> <VueDatePicker  v-model="item.from" placeholder="Select"/></li>
-        <li class="text-[#3E435F] text-[15px]">To:</li>
-        <li> <VueDatePicker v-model="item.to" placeholder="Select"/></li>
+        <li> <VueDatePicker  v-model="item.from" :enable-time-picker="false" placeholder="From"/></li>
+        <li> <VueDatePicker v-model="item.to" :enable-time-picker="false" placeholder="To"/></li>
       </ul>
     </div>
     <div class="col-span-2 flex items-center">
         <span v-if="item.saved"  class="text-[#0047CC] font-medium	">${{ (item.payRate * item.sickHours).toFixed(0) }}</span>
     </div>
     <div class="col-span-2 flex items-center">
-        <span v-if="item.saved" class="text-[#0047CC] font-medium	">${{ (item.payRate * item.sickHours) < 2000 ? (67/100 * (item.payRate * item.sickHours)).toFixed(0) : (item.payRate * item.sickHours).toFixed(0) }}</span>
+        <span v-if="item.saved" class="text-[#0047CC] font-medium	">${{ ((item.payRate * item.sickHours) < 2000 && twoThousandLogic) ? (67/100 * (item.payRate * item.sickHours)).toFixed(0) : (item.payRate * item.sickHours).toFixed(0) }}</span>
     </div>
     <div class="col-span-1 flex items-center">
       <ul class="flex gap-[10px] items-center">
@@ -128,7 +126,8 @@
       name: String,
       title: String,
       subTitle: String,
-      list: Array
+      list: Array,
+      twoThousandLogic: Boolean
    },
     components: { VueDatePicker },
     data() {
@@ -154,7 +153,7 @@
         return JSON.parse(JSON.stringify({...l, sickPay: (Number(l.payRate) * Number(l.sickHours))}))
       })
 
-      const value = data.reduce((a, b) => a + b.sickPay, 0).toFixed(0)
+      const value = data.reduce((a, b) => a + (this.twoThousandLogic ? this.calc(b) : b.sickPay), 0).toFixed(0)
 
       this.$emit('onDataChange', { name: this.name, value })
 
