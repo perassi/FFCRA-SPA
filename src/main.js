@@ -17,7 +17,6 @@ app.use(router)
 
 app.component('VueDatePicker', VueDatePicker);
 
-
 router.isReady().then(() => {
   app.mount('#app')
 })

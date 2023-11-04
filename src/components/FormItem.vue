@@ -13,8 +13,8 @@
 </ul>
 <div class="relativ">
   <form v-on:submit="didSubmitForm">
-<div class="relative">
-  <div class="grid grid-cols-16 gap-2 bg-[#D6DDEB] px-[20px] py-[20px] text-[15px] rounded-[10px]">
+<div class="relative overflow-scroll">
+  <div class="grid grid-cols-16 gap-2 bg-[#D6DDEB] px-[20px] py-[20px] text-[15px] rounded-[10px] min-w-[965px]">
     <div class="col-span-2">Employee Name</div>
     <div class="col-span-2">Regular Rate of Pay (hourly)</div>
     <div class="col-span-2">Hours of qualified sick leave</div>
@@ -23,7 +23,7 @@
     <div class="col-span-2">Employee Total Sick Pay</div>
     <div class="col-span-2">Reimbursement per employee</div>
   </div>
-  <div class="grid grid-cols-16 gap-2 mt-[10px] border-[#0047CC] border-[1px] rounded-[10px] p-[7px] pl-[20px] min-h-[59px]"   :class="{ 'bg-[white]': item.saved, 'border-[#D1D7E3]': item.saved }" v-for="(item, index) in items" :key="index">
+  <div class="grid grid-cols-16 gap-2 mt-[10px] border-[#0047CC] border-[1px] rounded-[10px] p-[7px] pl-[20px] min-h-[59px] min-w-[965px]"   :class="{ 'bg-[white]': item.saved, 'border-[#D1D7E3]': item.saved }" v-for="(item, index) in items" :key="index">
     <div class="col-span-2">
       <span v-if="!item.saved" class="flex items-center border-[#D1D7E3] w-full border-[1px] h-[44px] text-[#D1D7E3] w-[90px] pl-[10px] rounded-[10px] bg-white gap-[3px] focus:outline-none overflow-hidden">
           <input :name="`data[${index}]name`" v-model="item.name"  required type="text" placeholder="Name" class="w-full h-full text-[#3E435F] focus:outline-none" >
