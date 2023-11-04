@@ -91,7 +91,7 @@
             />
           </g>
         </svg>
-        <span>FFCRA Information</span>
+        <a href="/">FFCRA Information</a>
       </li>
       <li
         class="border-t-[#4C7EDB] border-t-[1px] py-[18px] flex pl-[14px] gap-[10px]"
@@ -172,7 +172,7 @@
             />
           </g>
         </svg>
-        <span>FAQs</span>
+        <a href="/faqs">FAQs</a>
       </li>
       <li
         class="border-y-[#4C7EDB] border-y-[1px] py-[18px] flex pl-[14px] gap-[10px]"
@@ -202,7 +202,7 @@
           </defs>
         </svg>
 
-        <span> Profile </span>
+        <a  href="/profile"> Profile </a>
       </li>
     </ul>
     <section class="p-[40px]">
