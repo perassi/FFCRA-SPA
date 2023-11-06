@@ -1,6 +1,9 @@
 <script>
 export default {
   name: 'LayOut',
+  data() {
+      return { open: false }
+  },
   props: {
     msg: String
   }
@@ -10,23 +13,22 @@ export default {
 
 <template>
   <div class="flex flex-col xl:flex-row">
-    <ul
-      class="bg-[#0047CC]  2xl:min-w-[273px] xl:min-w-[273px] text-[16px] text-white pt-[16px] xl:pt-[26px] xl:min-h-[100vh]"
-    >
-      <li class="mb-[16px] xl:mb-[51px] pr-[19px] flex justify-between items-center">
-        <div class="xl:hidden space-y-2 ml-[22px]">
-          <div class="w-[25px] h-[2px] bg-[white]"></div>
-          <div class="w-[25px] h-[2px] bg-[white]"></div>
-          <div class="w-[25px] h-[2px] bg-[white]"></div>
-        </div>
-        <img v-bind:src="require('../assets/logo.svg')" />
+    <ul :class="{ 'h-full': open }" class="fixed w-full z-10 xl:relative 2xl:min-w-[273px] xl:min-w-[273px] 2xl:max-w-[273px] xl:max-w-[273px] text-[16px] text-white xl:min-h-[100vh]">
+      <li class="bg-[#0047CC] py-[16px] xl:pb-[51px] px-[19px] flex justify-between items-center xl:pt-[26px]">
+        <button className="flex flex-col w-[25px] justify-center items-center group xl:hidden" v-on:click="open = !open">
+          <div :class="{ 'rotate-45 translate-y-2': open }" class="w-[25px] h-[2px] my-1 bg-[white] transition ease transform duration-300"></div>
+          <div :class="{ 'opacity-0': open }" class="w-[25px] h-[2px] my-1 bg-[white] transition ease transform duration-300"></div>
+          <div :class="{ '-rotate-45 -translate-y-3 ': open }"  class="w-[25px] h-[2px] my-1 bg-[white] transition ease transform duration-300"></div>
+    </button>
+        <img class="xl:min-w-[279px] xl:ml-[-42px]" v-bind:src="require('../assets/logo.svg')" />
         <div  class="xl:hidden">
           <img v-bind:src="require('../assets/support.svg')" />
         </div>
       </li>
-      <li
-        class="border-t-[#4C7EDB] border-t-[1px] py-[18px] flex pl-[14px] gap-[10px] font-[500]"
+      <li :class="{ 'hidden xl:flex': !open }" class="border-t-[#4C7EDB] bg-[#0047CC] border-t-[1px] py-[18px] px-[14px]  font-[500]"
       >
+      <router-link to="/" class="flex justify-between items-center  w-full">
+        <div class="flex gap-[10px]">
         <svg
           width="19"
           height="19"
@@ -71,11 +73,20 @@ export default {
             />
           </g>
         </svg>
-        <a href="/">FFCRA Information</a>
+       <span>
+        FFCRA Information
+       </span>
+      </div>
+      <svg width="11" height="15" class="hidden" viewBox="0 0 11 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1.88986 0.177254C1.6734 0.172493 1.46083 0.235243 1.28171 0.356875C1.10259 0.478508 0.965817 0.653012 0.890408 0.85597C0.814999 1.05893 0.8047 1.28031 0.860943 1.48939C0.917185 1.69847 1.03718 1.88475 1.20423 2.02249L7.57834 7.48309L1.20423 12.9418C1.08867 13.0267 0.991891 13.1345 0.919954 13.2586C0.848017 13.3827 0.802472 13.5203 0.786171 13.6628C0.769869 13.8053 0.783163 13.9496 0.82522 14.0867C0.867276 14.2238 0.937189 14.3508 1.03058 14.4596C1.12397 14.5684 1.23883 14.6567 1.36796 14.7191C1.49709 14.7815 1.63772 14.8166 1.78103 14.8221C1.92433 14.8276 2.06724 14.8036 2.20079 14.7513C2.33435 14.6991 2.45568 14.6198 2.55718 14.5185L9.85495 8.27451C9.96955 8.1767 10.0616 8.05532 10.1247 7.91851C10.1878 7.7817 10.2205 7.63279 10.2205 7.48213C10.2205 7.33147 10.1878 7.18256 10.1247 7.04575C10.0616 6.90894 9.96955 6.78743 9.85495 6.68963L2.55718 0.439657C2.37282 0.27591 2.13637 0.183055 1.88986 0.177254Z" fill="#4C7EDB"/>
+        </svg>
+
+      </router-link> 
       </li>
-      <li
-        class="border-t-[#4C7EDB] border-t-[1px] py-[18px] flex pl-[14px] gap-[10px]"
+      <li :class="{ 'hidden xl:flex': !open }"  class="border-t-[#4C7EDB] bg-[#0047CC] border-t-[1px] py-[18px] px-[14px] "
       >
+      <router-link to="/faqs"  class="flex justify-between items-center  w-full">
+        <div class="flex gap-[10px]">
         <svg
           width="24"
           height="24"
@@ -152,11 +163,16 @@ export default {
             />
           </g>
         </svg>
-        <a href="/faqs">FAQs</a>
+         <span >FAQs</span>
+        </div>
+        <svg width="11" height="15" class="hidden" viewBox="0 0 11 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1.88986 0.177254C1.6734 0.172493 1.46083 0.235243 1.28171 0.356875C1.10259 0.478508 0.965817 0.653012 0.890408 0.85597C0.814999 1.05893 0.8047 1.28031 0.860943 1.48939C0.917185 1.69847 1.03718 1.88475 1.20423 2.02249L7.57834 7.48309L1.20423 12.9418C1.08867 13.0267 0.991891 13.1345 0.919954 13.2586C0.848017 13.3827 0.802472 13.5203 0.786171 13.6628C0.769869 13.8053 0.783163 13.9496 0.82522 14.0867C0.867276 14.2238 0.937189 14.3508 1.03058 14.4596C1.12397 14.5684 1.23883 14.6567 1.36796 14.7191C1.49709 14.7815 1.63772 14.8166 1.78103 14.8221C1.92433 14.8276 2.06724 14.8036 2.20079 14.7513C2.33435 14.6991 2.45568 14.6198 2.55718 14.5185L9.85495 8.27451C9.96955 8.1767 10.0616 8.05532 10.1247 7.91851C10.1878 7.7817 10.2205 7.63279 10.2205 7.48213C10.2205 7.33147 10.1878 7.18256 10.1247 7.04575C10.0616 6.90894 9.96955 6.78743 9.85495 6.68963L2.55718 0.439657C2.37282 0.27591 2.13637 0.183055 1.88986 0.177254Z" fill="#4C7EDB"/>
+        </svg>
+      </router-link>
       </li>
-      <li
-        class="border-y-[#4C7EDB] border-y-[1px] py-[18px] flex pl-[14px] gap-[10px]"
-      >
+      <li :class="{ 'hidden xl:flex': !open }"   class="border-y-[#4C7EDB] bg-[#0047CC] border-y-[1px] py-[18px]  px-[14px]">
+       <router-link to="/profile"  class="flex justify-between items-center w-full">
+        <div class="flex gap-[10px]">
         <svg
           width="21"
           height="20"
@@ -181,11 +197,17 @@ export default {
             </clipPath>
           </defs>
         </svg>
+        <span>Profile</span>
 
-        <a  href="/profile"> Profile </a>
+      </div>
+         <svg width="11" height="15" class="hidden" viewBox="0 0 11 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1.88986 0.177254C1.6734 0.172493 1.46083 0.235243 1.28171 0.356875C1.10259 0.478508 0.965817 0.653012 0.890408 0.85597C0.814999 1.05893 0.8047 1.28031 0.860943 1.48939C0.917185 1.69847 1.03718 1.88475 1.20423 2.02249L7.57834 7.48309L1.20423 12.9418C1.08867 13.0267 0.991891 13.1345 0.919954 13.2586C0.848017 13.3827 0.802472 13.5203 0.786171 13.6628C0.769869 13.8053 0.783163 13.9496 0.82522 14.0867C0.867276 14.2238 0.937189 14.3508 1.03058 14.4596C1.12397 14.5684 1.23883 14.6567 1.36796 14.7191C1.49709 14.7815 1.63772 14.8166 1.78103 14.8221C1.92433 14.8276 2.06724 14.8036 2.20079 14.7513C2.33435 14.6991 2.45568 14.6198 2.55718 14.5185L9.85495 8.27451C9.96955 8.1767 10.0616 8.05532 10.1247 7.91851C10.1878 7.7817 10.2205 7.63279 10.2205 7.48213C10.2205 7.33147 10.1878 7.18256 10.1247 7.04575C10.0616 6.90894 9.96955 6.78743 9.85495 6.68963L2.55718 0.439657C2.37282 0.27591 2.13637 0.183055 1.88986 0.177254Z" fill="#4C7EDB"/>
+        </svg>
+         </router-link>
       </li>
+      <li :class="{ 'hidden xl:flex': !open }"  class="bg-[rgba(245,247,251,0.9)] xl:bg-[#0047CC] h-full w-full"></li>
     </ul>
-    <section class="p-[40px]">
+    <section class="pt-[113px] pl-[20px] pr-[20px] xl:p-[40px]">
       <slot></slot>
     </section>
   </div>

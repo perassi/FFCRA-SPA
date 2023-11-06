@@ -7,3 +7,10 @@ import LayOut from './components/LayOut.vue'
     <router-view></router-view>
   </LayOut>
 </template>
+
+<style>
+.router-link-active svg {
+  display: block!important;
+  /* background-color: red; */
+}
+</style>

@@ -1,13 +1,13 @@
 <template>
 <div>
-  <p class="mb-[9px]"><span class="text-[#3E435F] text-[24px] text-[#3E435F] font-[600] mr-[12px]">{{ title }}</span> <span class="text-[#0047CC] text-[16px] italic">{{ subTitle }}</span></p>
+  <p class="mb-[9px]"><span class="text-[#3E435F] text-[24px] text-[#3E435F] font-[600] mr-[12px] block xl:inline">{{ title }}</span> <span class="text-[#0047CC] text-[16px] italic">{{ subTitle }}</span></p>
 
 <ul class="text-[16px] text-[#3E435F] mb-[17px]">
-  <li class="leading-[35px] flex items-center gap-[10px]" v-for="(item, index) in list" :key="index">
-    <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <li class="flex items-start xl:items-center gap-[10px]" v-for="(item, index) in list" :key="index">
+    <svg width="21" height="20" class="w-[30px] h-[30px] xl:w-[21px] xl:h-[21px]" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M5.91416 8.1L4.51416 9.5L9.01416 14L19.0142 4L17.6142 2.6L9.01416 11.2L5.91416 8.1ZM18.0142 10C18.0142 14.4 14.4142 18 10.0142 18C5.61416 18 2.01416 14.4 2.01416 10C2.01416 5.6 5.61416 2 10.0142 2C10.8142 2 11.5142 2.1 12.2142 2.3L13.8142 0.7C12.6142 0.3 11.3142 0 10.0142 0C4.51416 0 0.0141602 4.5 0.0141602 10C0.0141602 15.5 4.51416 20 10.0142 20C15.5142 20 20.0142 15.5 20.0142 10H18.0142Z" fill="#3E435F"/>
     </svg>
-    <span class="">{{  item  }}</span>
+    <span class="leading-[25px] xl:leading-[35px]">{{  item  }}</span>
   </li>
 
 </ul>
