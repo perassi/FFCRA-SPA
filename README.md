@@ -1,4 +1,4 @@
-# Business GPS FFCRA ADMIN
+# Business GPS FFCRA Admin
 
 ## Project setup
 ```
