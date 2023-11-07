@@ -104,8 +104,9 @@ export default {
       });
     },
     async resolveDocId() {
+      const email = this.$route.query.email
       const snapshot = await db.collection(this.responseCollection)
-          .where('Email', '==', 'dev@binaryforest.io')
+          .where('Email', '==', email)
           .orderBy('created_at', 'desc').limit(1).get();
       snapshot.forEach(doc => {
         this.docId = doc.id
