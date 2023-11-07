@@ -175,13 +175,14 @@ export default {
     subTitle: String,
     list: Array,
     twoThousandLogic: Boolean,
-    collection: String
+    collection: String,
+    existingItems: Array,
+    docId: String,
+    responseCollection: String
   },
   components: {VueDatePicker},
   data() {
     return {
-      responseCollection: 'ffcra-responses',
-      docId: 'Dj8AIddy94CYaNnxWZ7e',
       items: [
         {
           id: '',
@@ -260,6 +261,11 @@ export default {
       e.preventDefault();
     }
   },
+  mounted() {
+    if (this.existingItems) {
+      this.items = [...this.existingItems]
+    }
+  }
 }
 </script>
 
