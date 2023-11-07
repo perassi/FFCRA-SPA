@@ -86,21 +86,30 @@ export default {
       const snapshot = await db.collection(this.responseCollection).doc(this.docId)
           .collection(this.selfLeavesCollection).get();
       snapshot.forEach(doc => {
-        this.selfLeaveItems.push({...doc.data(), id: doc.id})
+        const record = doc.data()
+        record.from = record.from ? record.from.toDate() : null
+        record.to = record.to ? record.to.toDate() : null
+        this.selfLeaveItems.push({id: doc.id, ...record})
       });
     },
     async populateCaringLeavesItems() {
       const snapshot = await db.collection(this.responseCollection).doc(this.docId)
           .collection(this.caringLeavesCollection).get();
       snapshot.forEach(doc => {
-        this.caringLeaveItems.push({...doc.data(), id: doc.id})
+        const record = doc.data()
+        record.from = record.from ? record.from.toDate() : null
+        record.to = record.to ? record.to.toDate() : null
+        this.caringLeaveItems.push({...record, id: doc.id})
       });
     },
     async populateFamilyLeavesItems() {
       const snapshot = await db.collection(this.responseCollection).doc(this.docId)
           .collection(this.familyLeavesCollection).get();
       snapshot.forEach(doc => {
-        this.familyLeaveItems.push({...doc.data(), id: doc.id})
+        const record = doc.data()
+        record.from = record.from ? record.from.toDate() : null
+        record.to = record.to ? record.to.toDate() : null
+        this.familyLeaveItems.push({...record, id: doc.id})
       });
     },
     async resolveDocId() {
