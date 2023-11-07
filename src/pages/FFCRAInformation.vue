@@ -56,7 +56,7 @@ export default {
   data: function () {
     return {
       render: false,
-      docId: "Dj8AIddy94CYaNnxWZ7e",
+      docId: "",
       responseCollection: 'ffcra-responses',
 
       selfLeavesCollection: 'self-leaves',
@@ -102,13 +102,25 @@ export default {
       snapshot.forEach(doc => {
         this.familyLeaveItems.push({...doc.data(), id: doc.id})
       });
+    },
+    async resolveDocId() {
+      const snapshot = await db.collection(this.responseCollection)
+          .where('Email', '==', 'dev@binaryforest.io')
+          .orderBy('created_at', 'desc').limit(1).get();
+      snapshot.forEach(doc => {
+        this.docId = doc.id
+      });
+      console.log(this.docId)
     }
   },
   async mounted() {
-    await this.populateSelfLeavesItems()
-    await this.populateCaringLeavesItems()
-    await this.populateFamilyLeavesItems()
-    this.render = true
+    await this.resolveDocId();
+    if (this.docId) {
+      await this.populateSelfLeavesItems()
+      await this.populateCaringLeavesItems()
+      await this.populateFamilyLeavesItems()
+      this.render = true
+    }
   },
   components: {
     FormItem
