@@ -120,7 +120,6 @@ export default {
       snapshot.forEach(doc => {
         this.docId = doc.id
       });
-      console.log(this.docId)
     }
   },
   async mounted() {
