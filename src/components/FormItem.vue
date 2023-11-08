@@ -273,6 +273,7 @@ export default {
         await db.collection(this.responseCollection).doc(this.docId)
             .collection(this.collection).doc(id).update(doc)
       }
+      await this.markStatus('IN_PROGRESS')
       this.showLoader = false
     },
     async deleteItem(index) {
@@ -283,6 +284,9 @@ export default {
           .collection(this.collection).doc(id).delete()
       this.items = this.items.filter((item, i) => i !== index)
       this.showLoader = false
+    },
+    async markStatus(status) {
+      await db.collection(this.responseCollection).doc(this.docId).update({'leave_form_status': status})
     },
     didSubmitForm(e) {
       e.preventDefault();
