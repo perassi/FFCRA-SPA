@@ -286,7 +286,7 @@ export default {
       this.showLoader = false
     },
     async markStatus(status) {
-      await db.collection(this.responseCollection).doc(this.docId).update({'leave_form_status': status})
+      await db.collection(this.responseCollection).doc(this.docId).update({'leave_form_status': status, updated_at: new Date()})
     },
     didSubmitForm(e) {
       e.preventDefault();
