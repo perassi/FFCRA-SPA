@@ -14,7 +14,6 @@
         </svg>
         <span class="leading-[25px] xl:leading-[35px]">{{ item }}</span>
       </li>
-
     </ul>
     <div class="relativ">
       <form v-on:submit="didSubmitForm">
