@@ -1,0 +1,32 @@
+image: node:14-alpine
+
+stages:
+  - build
+  - deploy
+
+cache:
+  paths:
+    - node_modules/
+
+prod-build:
+  stage: build
+  script:
+    - apk add --no-cache bash git openssh
+    - npm install
+    - npm run build
+  only:
+    - dev
+  artifacts:
+    paths:
+      - dist/
+
+deploy-to-firebase-prod:
+  stage: deploy
+  only:
+    - dev
+  dependencies:
+    - prod-build
+  before_script:
+    - npm i -g firebase-tools@11.30.0
+  script:
+    - firebase deploy --only hosting:prod --token $FIREBASE_TOKEN

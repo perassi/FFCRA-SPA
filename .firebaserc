@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "erc-experts"
+  },
+  "targets": {
+    "erc-experts": {
+      "hosting": {
+        "prod": [
+          "ffcra-admin"
+        ]
+      }
+    }
+  }
+}
