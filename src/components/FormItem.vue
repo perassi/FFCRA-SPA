@@ -68,10 +68,10 @@
             <div class="col-span-4 flex">
               <ul class="flex items-center gap-[10px]">
                 <li>
-                  <VueDatePicker v-model="item.from" :enable-time-picker="false" placeholder="From"/>
+                  <VueDatePicker v-model="item.from" :enable-time-picker="false" placeholder="From" :teleport="true"/>
                 </li>
                 <li>
-                  <VueDatePicker v-model="item.to" :enable-time-picker="false" placeholder="To"/>
+                  <VueDatePicker v-model="item.to" :enable-time-picker="false" placeholder="To" :teleport="true"/>
                 </li>
               </ul>
             </div>
