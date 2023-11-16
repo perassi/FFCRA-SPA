@@ -24,7 +24,7 @@
             <div class="col-span-2">Regular Rate of Pay (hourly)</div>
             <div class="col-span-2">Hours of qualified sick leave</div>
             <div class="col-span-2"># of days qualified sick</div>
-            <div class="col-span-4">Dates employee was out Employee</div>
+            <div class="col-span-4">Dates employee was out</div>
             <div class="col-span-2">Employee Total Sick Pay</div>
             <div class="col-span-2">Reimbursement per employee</div>
           </div>
@@ -167,7 +167,7 @@
             </clipPath>
           </defs>
         </svg>
-        <span class="font-[500]">Add additional employee</span>
+        <span class="font-[500]">Add Employee</span>
       </button>
     </div>
   </div>
