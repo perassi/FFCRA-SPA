@@ -1,5 +1,5 @@
 <template>
-  <div class="flex gap-[33px] flex-col 2xl:flex-row" v-if="render">
+  <div class="flex gap-[33px] flex-col 2xl:flex-row 2xl:mr-[300px]" v-if="render">
     <section class="order-2 2xl:order-1">
       <h2 class="text-[30px] xl:text-[40px] underline text-[#3E435F] mb-[2px] xl:mb-[46px] font-[600] leading-[66px]">
         Qualified Sick Leave</h2>
@@ -28,7 +28,7 @@
                 :twoThousandLogic="true" :list="qualifiedFamilyLeave" @onDataChange="updateData"/>
     </section>
     <section class="order-1 2xl:order-2">
-      <ul class="bg-[#FFFFFF] border-[#0047CC] border-[2px] rounded-[10px] min-w-[280px] pt-[10px] 2xl:mt-[117px]">
+      <ul class="bg-[#FFFFFF] border-[#0047CC] border-[2px] rounded-[10px] min-w-[280px] pt-[10px] 2xl:mt-[117px] 2xl:fixed">
         <li class="text-[21px] font-[600] text-center mb-[21px] xl:max-w-[174px] m-auto">Money Back to the company</li>
         <li class="text-[18px] flex justify-between bg-[#F5F7FB] mx-[11px] px-[19px] xl:px-[8px]"><span
             class="text-[#3E435F] text-[15px]">Self Leave</span> <span
